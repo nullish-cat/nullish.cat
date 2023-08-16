@@ -1,0 +1,81 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from "./ThemeToggle.svelte";
+import { SITE_TITLE } from '../consts';
+---
+
+<header>
+	<nav>
+		<h2><a href="/">
+			<span class="icon-neocat" style="font-size:1em"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span></span>
+			{SITE_TITLE}
+		</a></h2>
+		<div class="internal-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+		</div>
+		<div class="social-links">
+			<a>
+				<ThemeToggle client:load>
+					<span class="icon-contrast1"></span>
+				</ThemeToggle>
+			</a>
+			<a href="https://very.bignutty.xyz/@nullishcat" target="_blank">
+				<span class="sr-only">Follow me on Firefish (bignutty.xyz)</span>
+				<span class="icon-Firefish"></span>
+			</a>
+			<a href="mailto:nullishcat@fmhy.net">
+				<span class="sr-only">Send me mail</span>
+				<span class="icon-mail41"></span>
+			</a>
+			<a href="https://github.com/nullish-cat/nullish.cat" target="_blank">
+				<span class="sr-only">See the site's source code</span>
+				<span class="icon-github1"></span>
+			</a>
+	</nav>
+</header>
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: var(--clr-bg0);
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		color: var(--black);
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--clr-accent);
+	}
+	.social-links,
+	.social-links a,
+	.social-links astro-island {
+		display: flex;
+	}
+	.social-links [class^="icon-"], .social-links [class*=" icon-"] {
+		font-size: 2em;
+	}
+	@media (max-width: 720px) {
+		.social-links {
+			display: none;
+		}
+	}
+</style>

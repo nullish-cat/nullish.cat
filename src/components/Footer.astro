@@ -1,0 +1,48 @@
+---
+import ThemeToggle from "./ThemeToggle.svelte";
+---
+
+<footer>
+	&copy; 1843 Your name here. No rights reserved.
+	<div class="social-links">
+		<ThemeToggle client:load>
+			<span class="icon-contrast1"></span>
+		</ThemeToggle>
+		<a href="https://very.bignutty.xyz/@nullishcat" target="_blank">
+			<span class="sr-only">Follow me on Firefish (bignutty.xyz)</span>
+			<span class="icon-Firefish"></span>
+		</a>
+		<a href="mailto:nullishcat@fmhy.net">
+			<span class="sr-only">Send me mail</span>
+			<span class="icon-mail41"></span>
+		</a>
+		<a href="https://github.com/nullish-cat/nullish.cat" target="_blank">
+			<span class="sr-only">See the site's source code</span>
+			<span class="icon-github1"></span>
+		</a>
+	</div>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: rgb(var(--gray));
+		text-align: center;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+	.social-links [class^="icon-"], .social-links [class*=" icon-"] {
+		font-size: 2em;
+	}
+</style>
