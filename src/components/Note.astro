@@ -1,0 +1,87 @@
+---
+interface Props {
+    type?: string;
+    title?: string;
+}
+
+const { type = "warning", title = "" } = Astro.props;
+---
+<div class:list={type}>
+    {title ? <p class="title">{title}</p> : null}
+    <slot />
+</div>
+
+<style>
+    div * {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+    div {
+        padding: 1rem 1rem 0 1rem;
+        margin-bottom: 1rem;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+    }
+    .title {
+        font-weight: 700 !important;
+    }
+    .title::before {
+        vertical-align: -.125em;
+    }
+    .title:before {
+        margin-right: .5em;
+    }
+    div.info {
+        color: #3a87ad;
+        background-color: #d9edf7;
+    }
+    div.note {
+        color: #468847;
+        background-color: #dff0d8;
+    }
+    div.warning {
+        color: #c09853;
+        background-color: #fcf8e3;
+    }
+    div.danger {
+        color: #b94a48;
+        background-color: #f2dede;
+    }
+    div.info > .title:before {
+        content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%233a87ad" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/></svg>');
+    }
+    div.note > .title:before {
+        content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23468847" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>');
+    }
+    div.warning > .title:before {
+        content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23c09853" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>')
+    }
+    div.danger {
+        content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23b94a48" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>');
+    }
+    body.dark div.info {
+        color: #5c8ca4;
+        background-color: #2b383e;
+    }
+    body.dark div.note {
+        color: #699269;
+        background-color: #2d3829;
+    }
+    body.dark div.warning {
+        color: #a88548;
+        background-color: #4e4632;
+    }
+    body.dark div.danger {
+        color: #bb8483;
+        background-color: #4c2a2a;
+    }
+    body.dark .title::before {
+        filter: invert(100%) hue-rotate(180deg) contrast(70%) grayscale(10%) !important;
+    }
+    body.dark div.warning > .title::before {
+        filter: invert(100%) hue-rotate(180deg) brightness(140%) contrast(70%) grayscale(10%) !important;
+    }
+    body.dark div.danger > .title::before {
+        filter: invert(100%) hue-rotate(180deg) contrast(55%) grayscale(10%) !important;
+    }
+</style>

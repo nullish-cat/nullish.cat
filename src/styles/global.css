@@ -215,7 +215,7 @@ blockquote {
 }
 hr {
 	border: none;
-	border-top: 1px solid var(--clr-bg0);
+	border-top: 1px solid var(--clr-fg0);
 }
 @media (max-width: 720px) {
 	body {
