@@ -272,7 +272,9 @@ hr {
 .icon-github1:before {
 	content: "\eab0";
 }
-
+.icon-neocat {
+	padding: 0 5px;
+}
 .icon-neocat .path1:before {
 	content: "\e900";
 	color: rgb(0, 0, 0);
